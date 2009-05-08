@@ -1,0 +1,13 @@
+6
+Bugs Bunny 12345678 course
+4 ITB111 6 ITB123 5 ITB222 7 ITB720 6 
+Joe Schmuckatelli 11111111 course
+3 ITN400 4 ITN700 3 ITN702 5 
+Marvin Dipwart 22222222 research
+master new-enrolled
+Jimmy Crack-Corn 33333333 research
+phd candidature-confirmed
+James Kirk 44444444 course
+4 INB111 6 INB230 6 INB310 6 INB371 5 
+Monica Lewinsky 55555555 research
+phd degree-completion

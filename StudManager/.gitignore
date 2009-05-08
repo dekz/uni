@@ -1,0 +1,19 @@
+<<<<<<< HEAD:.gitignore
+/Debug/*
+/VideoMan/Debug/*
+=======
+StudManager/bin
+StudManager/obj
+*.user
+*.suo
+_ReSharper.*
+*.sln.cache
+*.ncb
+/StudManager/Debug/*
+/StudManager/StudManager/Debug/*
+/StudManager/StudManager/StudManager/Debug/*
+/VideoMan/Debug/*
+/VideoMan/VideoMan/Debug/*
+/VideoMan/VideoMan/VideoMan/Debug/*
+.DS_Store
+>>>>>>> 069766e7d30a879d90d17abc168ee34d90090124:.gitignore
