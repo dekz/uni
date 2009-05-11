@@ -59,9 +59,8 @@ bool MovieCollection::remove(Movie* data)
 
 	ListNode* _currNode = firstNode;
 	bool _success = false;
-	for (_currNode = lastNode; _currNode != 0; _currNode->getNext())
+	for (_currNode = lastNode; _currNode != 0; _currNode = _currNode->getNext())
 	{
-
 		if (_currNode->getData()->getTitle() == data->getTitle())
 		{
 			if (_currNode == firstNode)
