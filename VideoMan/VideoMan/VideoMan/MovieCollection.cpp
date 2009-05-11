@@ -57,6 +57,7 @@ void MovieCollection::clear()
 bool MovieCollection::remove(Movie* data)
 {
 	ListNode* _currNode;
+	ListNode* _deleteNode;
 	bool _success = false;
 	for (_currNode = firstNode; _currNode != 0; _currNode = _currNode->getNext())
 	{
@@ -74,11 +75,14 @@ bool MovieCollection::remove(Movie* data)
 			else
 			{
 				_currNode->getNext()->setPrevious(_currNode->getPrevious());
-				cout << "My previous is: " << _currNode->getPrevious()->getData()->getTitle();
+				cout << "My previous is: " << _currNode->getPrevious()->getData()->getTitle() << endl;
 				_currNode->getPrevious()->setNext(_currNode->getNext());
 			}
 			cout << "deleting node: " << _currNode << endl;
-			delete _currNode;
+			
+			_deleteNode = _currNode;
+			_currNode = _currNode->getPrevious();
+			delete _deleteNode;
 			_success = 1;
 		}
 	}
