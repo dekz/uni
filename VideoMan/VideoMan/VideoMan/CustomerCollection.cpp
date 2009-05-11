@@ -9,7 +9,7 @@ CustomerCollection::CustomerCollection(void)
 	m_root = 0;
 }
 
-void CustomerCollection::insert(const Customer a_customer)
+void CustomerCollection::insert(Customer* a_customer)
 {
 	if (m_root == 0)
 	{
@@ -19,9 +19,9 @@ void CustomerCollection::insert(const Customer a_customer)
 		insert(a_customer, m_root);
 }
 
-void CustomerCollection::insert(Customer a_customer, CTreeNode* p)
+void CustomerCollection::insert(Customer* a_customer, CTreeNode* p)
 {	
-	if (a_customer.getName() < p->getItem().getName())
+	if (a_customer->getName() < p->getItem()->getName())
 	{
 		if (p->getLChild() == 0)
 			p->setLChild(new CTreeNode(a_customer));
@@ -38,21 +38,21 @@ void CustomerCollection::insert(Customer a_customer, CTreeNode* p)
 
 }
 
-bool CustomerCollection::search(const Customer a_customer) const
+bool CustomerCollection::search(Customer* a_customer) const
 {
 	return search(a_customer, m_root);
 }
 
-bool CustomerCollection::search(const Customer a_customer, CTreeNode* a_root) const
+bool CustomerCollection::search(Customer* a_customer, CTreeNode* a_root) const
 {
 	if (a_root != 0)
 	{
-		if (a_customer.getName() == a_root->getItem().getName())
+		if (a_customer->getName() == a_root->getItem()->getName())
 		{
 			return true;
 		}
 		else 
-			if (a_customer.getName() < a_root->getItem().getName())
+			if (a_customer->getName() < a_root->getItem()->getName())
 			{
 				return search(a_customer, a_root->getLChild());
 			}
@@ -130,14 +130,14 @@ CustomerCollection::~CustomerCollection(void)
 	__cleanUp(m_root);
 }
 
-void CustomerCollection::deleteItem(const Customer a_customer)
+void CustomerCollection::deleteItem(Customer* a_customer)
 {
 	CTreeNode* ptr = m_root; // search reference
 	CTreeNode* parent = 0; // parent of ptr
-	while((ptr != 0)&&(a_customer.getName() != ptr->getItem().getName()))
+	while((ptr != 0)&&(a_customer->getName() != ptr->getItem()->getName()))
 	{
 		parent = ptr;
-		if(a_customer.getName() < ptr->getItem().getName()) // move to the left child of ptr
+		if(a_customer->getName() < ptr->getItem()->getName()) // move to the left child of ptr
 			ptr = ptr->getLChild();
 		else
 			ptr = ptr->getRChild();
@@ -166,7 +166,7 @@ void CustomerCollection::deleteItem(const Customer a_customer)
 					p = p->getRChild();
 				}
 				// copy the item at p to ptr
-				Customer temp = p->getItem();
+				Customer* temp = p->getItem();
 				ptr->setItem (temp);
 				CTreeNode* temp_pointer = p->getLChild();
 				pp->setRChild (temp_pointer);

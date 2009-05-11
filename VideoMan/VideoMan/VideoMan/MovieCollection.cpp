@@ -61,7 +61,6 @@ bool MovieCollection::remove(Movie* data)
 	bool _success = false;
 	for (_currNode = firstNode; _currNode != 0; _currNode = _currNode->getNext())
 	{
-		cout << "looking in node: " << _currNode << endl;
 		if (_currNode->getData()->getTitle() == data->getTitle())
 		{
 			if (_currNode == firstNode)
@@ -74,22 +73,20 @@ bool MovieCollection::remove(Movie* data)
 			}
 			else
 			{
+				//since we have a doubly linked list, properly detatch our node
 				_currNode->getNext()->setPrevious(_currNode->getPrevious());
-				cout << "My previous is: " << _currNode->getPrevious()->getData()->getTitle() << endl;
 				_currNode->getPrevious()->setNext(_currNode->getNext());
 			}
-			cout << "deleting node: " << _currNode << endl;
 			
+			//create a temp variable as to not cause error with our for loop
 			_deleteNode = _currNode;
 			_currNode = _currNode->getPrevious();
+			
 			delete _deleteNode;
 			_success = 1;
 		}
 	}
 
-		//check empty
-		//check the head
-	
 	if (_success)
 	{
 		m_listCount--;

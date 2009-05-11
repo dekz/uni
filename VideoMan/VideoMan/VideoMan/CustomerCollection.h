@@ -11,10 +11,10 @@ public:
 	CustomerCollection(void);
 	~CustomerCollection(void);
 	bool IsEmpty() const;
-	void insert(const Customer a_customer);
-	void insert(Customer item, CTreeNode* root);
-	void deleteItem(const Customer a_customer);
-	bool search(const Customer a_customer) const;
+	void insert(Customer* a_customer);
+	void insert(Customer* a_customer, CTreeNode* root);
+	void deleteItem(Customer* a_customer);
+	bool search(Customer* a_customer) const;
 	void PreOrderTraverse() const;
 	void InOrderTraverse() const;
 	void PostOrderTraverse() const;
@@ -22,7 +22,7 @@ public:
 	void InOrderTraverse(CTreeNode* root) const;
 	void PostOrderTraverse(CTreeNode* root) const;
 	void Clear();
-	bool search(const Customer a_customer, CTreeNode* a_root) const; 
+	bool search(Customer* a_customer, CTreeNode* a_root) const; 
 
 private:
 	CTreeNode* m_root;

@@ -29,10 +29,10 @@ int main()
 	Movie* a5 = new Movie("Lion King 2",10,"A","a","19th");
 	Movie* b5 = new Movie("test",10,"A","a","19th");
 	Movie* c5 = new Movie("test2",10,"A","a","19th");
-	//Customer* jacob = new Customer("a", "152","323");
+	Customer* jacob = new Customer("a", "152","323");
 	//Customer* jack = new Customer("x", "152","323");
 	//Customer* bob = new Customer("bob", "152","323");
-	//g_CUSTOMERS.insert(jacob);
+	g_CUSTOMERS.insert(jacob);
 	//g_CUSTOMERS.insert(bob);
 	//g_CUSTOMERS.insert(jack);
 	g_MOVIES.insert(e5);
@@ -42,14 +42,15 @@ int main()
 	cout << "Looking for a5: " << g_MOVIES.search(a5) << endl;
 	cout << "Removing a5: " << g_MOVIES.remove(a5) << endl;
 	cout << "Looking for a5: " << g_MOVIES.search(a5) << endl;
-	/*bob.addMovie(a5);
-	cout << "search for bob " << g_CUSTOMERS.search(bob) << endl;
-	g_CUSTOMERS.InOrderTraverse();
+	jacob->addMovie(e5);
+	cout << "search for jacob: " << g_CUSTOMERS.search(jacob) << endl;
+	/*g_CUSTOMERS.InOrderTraverse();
 	g_CUSTOMERS.PostOrderTraverse();
-	g_CUSTOMERS.PreOrderTraverse();
-	cout << "search for movie in bob " << bob.searchMovie(e5)  << endl;
-	g_CUSTOMERS.deleteItem(bob);
-	*/
+	g_CUSTOMERS.PreOrderTraverse();*/
+	cout << "search for movie in jacob: " << jacob->searchMovie(e5)  << endl;
+	g_CUSTOMERS.deleteItem(jacob);
+	cout << "search for jacob: " << g_CUSTOMERS.search(jacob) << endl;
+	
 	string test = "";
 	cin >> test;
 	return 0;

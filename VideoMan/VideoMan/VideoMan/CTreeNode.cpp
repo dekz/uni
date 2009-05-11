@@ -1,18 +1,18 @@
 #include "CTreeNode.h"
 
-CTreeNode::CTreeNode(Customer item)
+CTreeNode::CTreeNode(Customer* item)
 {
 	lchild = 0;
 	rchild = 0;
 	m_item = item;
 }
 
-void CTreeNode::setItem(const Customer& data)
+void CTreeNode::setItem(Customer* data)
 {
 	m_item = data;
 }
 
-Customer CTreeNode::getItem() const
+Customer* CTreeNode::getItem() const
 {
 	return m_item;
 }
