@@ -56,11 +56,11 @@ void MovieCollection::clear()
 
 bool MovieCollection::remove(Movie* data)
 {
-
-	ListNode* _currNode = firstNode;
+	ListNode* _currNode;
 	bool _success = false;
-	for (_currNode = lastNode; _currNode != 0; _currNode = _currNode->getNext())
+	for (_currNode = firstNode; _currNode != 0; _currNode = _currNode->getNext())
 	{
+		cout << "looking in node: " << _currNode << endl;
 		if (_currNode->getData()->getTitle() == data->getTitle())
 		{
 			if (_currNode == firstNode)
@@ -74,14 +74,18 @@ bool MovieCollection::remove(Movie* data)
 			else
 			{
 				_currNode->getNext()->setPrevious(_currNode->getPrevious());
+				cout << "My previous is: " << _currNode->getPrevious()->getData()->getTitle();
 				_currNode->getPrevious()->setNext(_currNode->getNext());
 			}
-
+			cout << "deleting node: " << _currNode << endl;
 			delete _currNode;
 			_success = 1;
 		}
 	}
 
+		//check empty
+		//check the head
+	
 	if (_success)
 	{
 		m_listCount--;

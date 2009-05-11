@@ -37,7 +37,7 @@ void ListNode::setData(Movie* data)
 
 void ListNode::setNext(ListNode* nextNode)
 {
-	m_next = nextNode;
+	this->m_next = nextNode;
 }
 
 void ListNode::setPrevious(ListNode* previousNode)
@@ -57,6 +57,7 @@ void ListNode::insertAfter(ListNode* node)
 	{
 		m_next = node->getNext();
 		node->setNext(this);
+		this->m_previous = node;
 	}
 	else 
 	{
