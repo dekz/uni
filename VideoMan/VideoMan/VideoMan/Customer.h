@@ -8,14 +8,14 @@ class Customer
 {
 public:
 	Customer(const string a_name, const string a_address, const string a_phonenumber);
-	Customer(void);
-	~Customer(void);
+	Customer();
+	~Customer();
 	string getName() const;
 	string getAddress() const;
 	string getPhone() const;
-	void addMovie(Movie a_movie);
+	void addMovie(Movie* a_movie);
 	void removeMovie(Movie* a_movie);
-	bool searchMovie(Movie a_movie);
+	bool searchMovie(Movie* a_movie);
 	friend ostream & operator<<(ostream &os, const Customer &e);
 private:
 	string m_name;

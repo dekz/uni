@@ -27,6 +27,8 @@ int main()
 {
 	Movie* e5 = new Movie("Lion King 1.5",10,"A","a","19th");
 	Movie* a5 = new Movie("Lion King 2",10,"A","a","19th");
+	Movie* b5 = new Movie("test",10,"A","a","19th");
+	Movie* c5 = new Movie("test2",10,"A","a","19th");
 	//Customer* jacob = new Customer("a", "152","323");
 	//Customer* jack = new Customer("x", "152","323");
 	//Customer* bob = new Customer("bob", "152","323");
@@ -35,13 +37,19 @@ int main()
 	//g_CUSTOMERS.insert(jack);
 	g_MOVIES.insert(e5);
 	g_MOVIES.insert(a5);
-	bob.addMovie(a5);
+	g_MOVIES.insert(b5);
+	g_MOVIES.insert(c5);
+	cout << "Looking for a5: " << g_MOVIES.search(a5) << endl;
+	cout << "Removing a5: " << g_MOVIES.remove(a5) << endl;
+	cout << "Looking for a5: " << g_MOVIES.search(a5) << endl;
+	/*bob.addMovie(a5);
 	cout << "search for bob " << g_CUSTOMERS.search(bob) << endl;
 	g_CUSTOMERS.InOrderTraverse();
 	g_CUSTOMERS.PostOrderTraverse();
 	g_CUSTOMERS.PreOrderTraverse();
 	cout << "search for movie in bob " << bob.searchMovie(e5)  << endl;
 	g_CUSTOMERS.deleteItem(bob);
+	*/
 	string test = "";
 	cin >> test;
 	return 0;

@@ -11,13 +11,13 @@ Customer::Customer(const string a_name, const string a_address, const string a_p
 	MovieCollection m_movies;
 }
 
-void Customer::addMovie(Movie a_movie)
+void Customer::addMovie(Movie* a_movie)
 {
 	//look through the global list of movies, add a pointer to that object into our list
 	m_movies.insert(a_movie);
 }
 
-bool Customer::searchMovie(Movie a_movie)
+bool Customer::searchMovie(Movie* a_movie)
 {
 	return m_movies.search(a_movie);
 }

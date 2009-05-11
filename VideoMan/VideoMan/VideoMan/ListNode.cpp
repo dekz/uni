@@ -2,17 +2,19 @@
 
 ListNode::ListNode()
 {
-//	m_data = NULL;
+	m_data = NULL;
+	m_next = 0;
+	m_previous = 0;
 }
 
-ListNode::ListNode(const Movie& data)
+ListNode::ListNode(Movie* data)
 {
 	m_data = data;
 	m_next = 0;
 	m_previous = 0;
 }
 
-Movie ListNode::getData() const
+Movie* ListNode::getData() const
 {
 	return m_data;
 }
@@ -22,7 +24,13 @@ ListNode* ListNode::getNext()
 	return m_next;
 }
 
-void ListNode::setData(const Movie& data)
+ListNode* ListNode::getPrevious()
+{
+	return m_previous;
+}
+
+
+void ListNode::setData(Movie* data)
 {
 	m_data = data;
 }
@@ -36,6 +44,7 @@ void ListNode::setPrevious(ListNode* previousNode)
 {
 	m_previous = previousNode;
 }
+
 
 /*
 This method will take a node as a parameter 

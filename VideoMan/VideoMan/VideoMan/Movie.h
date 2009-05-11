@@ -6,9 +6,9 @@ using namespace std;
 class Movie
 {
 public:
-	Movie(void);	
+	Movie();	
 	Movie(const string a_title, const int a_duration, const string a_genre, const string a_classification, const string a_releaseDate);
-	~Movie(void);
+	~Movie();
 	string getTitle();
 	//bool operator==(Movie e) const;
 

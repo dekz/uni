@@ -4,10 +4,10 @@ MovieCollection::MovieCollection()
 {
 	firstNode = 0;
 	lastNode = 0;
-	
+
 }
 
-void MovieCollection::insert(const Movie data)
+void MovieCollection::insert(Movie* data)
 {
 	ListNode* p = new ListNode(data);
 
@@ -24,39 +24,78 @@ void MovieCollection::insert(const Movie data)
 	m_listCount++;
 }
 
-bool MovieCollection::search(Movie data)
+bool MovieCollection::search(Movie* data)
 {
-	ListNode* current = firstNode;
-
-	while ((current != lastNode) || (current != NULL))
+	ListNode* _currNode = firstNode;
+	while ((_currNode != lastNode) || (_currNode != 0))
 	{
-
-		if (current->getData().getTitle() == data.getTitle())
+		if (_currNode->getData()->getTitle() == data->getTitle())
 		{
 			return 1;
 		}
-		current = current->getNext();
+		_currNode = _currNode->getNext();
+		if ((_currNode == lastNode) || (_currNode == 0))
+		{
+			break;
+		}
 	}
+
 	return 0;
 }
 
 void MovieCollection::clear()
 {
 	while (firstNode != 0)
-    {
-          ListNode *t = firstNode;
-		  firstNode = firstNode->getNext();
-          delete t;
-    }
+	{
+		ListNode *t = firstNode;
+		firstNode = firstNode->getNext();
+		delete t;
+	}
 
 }
 
-int MovieCollection::remove()
+bool MovieCollection::remove(Movie* data)
 {
-	return 1;
+
+	ListNode* _currNode = firstNode;
+	bool _success = false;
+	for (_currNode = lastNode; _currNode != 0; _currNode->getNext())
+	{
+
+		if (_currNode->getData()->getTitle() == data->getTitle())
+		{
+			if (_currNode == firstNode)
+			{
+				firstNode = _currNode->getNext();
+			} 
+			else if (_currNode == lastNode)
+			{
+				lastNode = _currNode->getPrevious();
+			}
+			else
+			{
+				_currNode->getNext()->setPrevious(_currNode->getPrevious());
+				_currNode->getPrevious()->setNext(_currNode->getNext());
+			}
+
+			delete _currNode;
+			_success = 1;
+		}
+	}
+
+	if (_success)
+	{
+		m_listCount--;
+		return 1;
+	}
+	else
+		return 0;
+
 }
 
 MovieCollection::~MovieCollection(void)
 {
 	clear();
 }
+
+
