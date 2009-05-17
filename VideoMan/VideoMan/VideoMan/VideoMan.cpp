@@ -38,7 +38,6 @@ int main()
 	Movie* b5 = new Movie("c",10,"A","a","19th");
 	Movie* c5 = new Movie("z",10,"A","a","19th");
 	Customer* jacob = new Customer("jacob", "152","323");
-	a5->dude();
 	//Customer* jack = new Customer("x", "152","323");
 	//Customer* bob = new Customer("bob", "152","323");
 	g_CUSTOMERS.insert(jacob);
@@ -48,7 +47,6 @@ int main()
 	g_MOVIES.insert(a5);
 	g_MOVIES.insert(b5);
 	g_MOVIES.insert(c5);
-	g_MOVIES.traverse();
 	//cout << "Looking for a5: " << g_MOVIES.search(e5) << endl;
 	//cout << "Removing a5: " << g_MOVIES.remove(a5) << endl;
 	//cout << "Looking for a5: " << g_MOVIES.search(c5) << endl;
@@ -57,11 +55,12 @@ int main()
 	/*g_CUSTOMERS.InOrderTraverse();
 	g_CUSTOMERS.PostOrderTraverse();
 	g_CUSTOMERS.PreOrderTraverse();*/
-	cout << "search for movie in jacob: " << jacob->searchMovie(e5)  << endl;
+	//cout << "search for movie in jacob: " << jacob->searchMovie(e5)  << endl;
 	//g_CUSTOMERS.deleteItem(jacob);
 	//cout << "search for jacob: " << g_CUSTOMERS.search(jacob) << endl;
 	string _instruction;
 	//cin >> _instruction;
+	cout << "# Enter instructions" << endl;
 	cout << "# ";
 	while (!((cin >> _instruction) == "quit"))
 	{
@@ -197,6 +196,7 @@ void addCustomer()
 }
 void removeCustomer()
 {
+
 }
 
 void addCustomer(Customer* a_customer)
@@ -212,6 +212,7 @@ void addCustomer(Customer* a_customer)
 	}
 	cout << "Inserted customer: " << a_customer->getName() << endl;
 }
+
 void removeCustomer(Customer a_customer)
 {
 }
@@ -233,7 +234,7 @@ void getMovieDetails()
 void getMovieDetails(string a_movie)
 {
 	//cout << g_MOVIES.getMovie(a_movie)->getTitle();
-	//g_MOVIES.getMovie(a_movie)->ToString();
+	g_MOVIES.getMovie(a_movie)->ToString();
 }
 
 void getCustomerDetails()

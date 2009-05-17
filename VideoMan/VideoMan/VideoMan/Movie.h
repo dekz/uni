@@ -14,7 +14,6 @@ public:
 	~Movie();
 	string getTitle();
 	void ToString();
-	void dude();
 
 private:
 	string m_title;

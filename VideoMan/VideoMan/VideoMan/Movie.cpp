@@ -23,13 +23,12 @@ Movie::Movie(const string a_title, const int a_duration, const string a_genre, c
 	m_title = a_title;
 }
 
-/*bool Movie::operator==(Movie e) const
+void Movie::ToString()
 {
-	if(this->getTitle() == e.getTitle())
-		return 1;
-	else
-		return 0;
-}*/
+	cout << m_title << endl;
+	cout << m_duration << endl;
+	cout << m_genre << endl;
+}
 
 string Movie::getTitle()
 {
