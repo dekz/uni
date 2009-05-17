@@ -247,10 +247,7 @@ Movie* getMovie()
 
 void getMovieDetails()
 {
-	if (getMovie())
-	{
-		getMovie()->ToString();
-	}
+	getMovie()->ToString();
 }
 
 /*void getMovieDetails(string a_movie)
@@ -280,10 +277,7 @@ Customer* getCustomer()
 
 void getCustomerDetails()
 {
-	if (getCustomer())
-	{
-		getCustomer()->ToString();
-	}
+	getCustomer()->ToString();
 }
 
 /*
