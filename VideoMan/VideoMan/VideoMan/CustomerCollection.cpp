@@ -43,6 +43,33 @@ bool CustomerCollection::search(Customer* a_customer) const
 	return search(a_customer, m_root);
 }
 
+bool CustomerCollection::search(string a_name)
+{
+	return search(a_name, m_root);
+}
+
+
+bool CustomerCollection::search(string a_name, CTreeNode* a_root)
+{
+	if (a_root != 0)
+	{
+		if (a_name == a_root->getItem()->getName())
+		{
+			return true;
+		}
+		else 
+			if (a_name < a_root->getItem()->getName())
+			{
+				return search(a_name, a_root->getLChild());
+			}
+			else 
+				return search(a_name, a_root->getRChild());
+	}
+	else 
+		return false;
+
+}
+
 bool CustomerCollection::search(Customer* a_customer, CTreeNode* a_root) const
 {
 	if (a_root != 0)
@@ -76,7 +103,6 @@ void CustomerCollection::__cleanUp(const CTreeNode* p)
 
 void CustomerCollection::PreOrderTraverse() const
 {
-	cout << "PreOrder: " << endl;;
 	PreOrderTraverse(m_root);
 	cout<< endl;
 }
@@ -85,7 +111,7 @@ void CustomerCollection::PreOrderTraverse(CTreeNode* root) const
 {
 	if(root != 0)
 	{
-		cout << root->getItem();
+		cout << root->getItem()->getName() << endl;
 		PreOrderTraverse(root->getLChild());
 		PreOrderTraverse(root->getRChild());
 	}
@@ -93,7 +119,6 @@ void CustomerCollection::PreOrderTraverse(CTreeNode* root) const
 
 void CustomerCollection::InOrderTraverse() const
 {
-	cout<< "InOrder: " << endl;
 	InOrderTraverse(m_root);
 	cout << endl;
 }
@@ -103,14 +128,13 @@ void CustomerCollection::InOrderTraverse(CTreeNode* root) const
 	if(root != 0)
 	{
 		InOrderTraverse(root->getLChild());
-		cout << root->getItem();
+		cout << root->getItem()->getName() << endl;
 		InOrderTraverse(root->getRChild());
 	}
 }
 
 void CustomerCollection::PostOrderTraverse() const
 {
-	cout << "PostOrder: " << endl;
 	PostOrderTraverse(m_root);
 	cout << endl;
 }
@@ -121,7 +145,7 @@ void CustomerCollection::PostOrderTraverse(CTreeNode* root) const
 	{
 		PostOrderTraverse(root->getLChild());
 		PostOrderTraverse(root->getRChild());
-		cout << root->getItem(); 
+		cout << root->getItem()->getName() << endl; 
 	}
 }
 
@@ -201,4 +225,29 @@ void CustomerCollection::deleteItem(Customer* a_customer)
 		}
 
 	}
+}
+
+Customer* CustomerCollection::getCustomer(string a_name)
+{
+	return getCustomer(a_name, m_root);
+}
+
+Customer* CustomerCollection::getCustomer(string a_name, CTreeNode* a_root)
+{
+	if (a_root != 0)
+	{
+		if (a_name == a_root->getItem()->getName())
+		{
+			return a_root->getItem();
+		}
+		else 
+			if (a_name < a_root->getItem()->getName())
+			{
+				return getCustomer(a_name, a_root->getLChild());
+			}
+			else 
+				return getCustomer(a_name, a_root->getRChild());
+	}
+	else 
+		return 0;
 }

@@ -4,6 +4,16 @@ Movie::Movie(void)
 {
 }
 
+Movie::Movie(string a_movieName)
+{
+	m_title = a_movieName;
+	m_classification = "";
+	m_duration = 0;
+	m_genre = "";
+	m_releaseDate = "";
+}
+
+
 Movie::Movie(const string a_title, const int a_duration, const string a_genre, const string a_classification, const string a_releaseDate)
 {
 	m_classification = a_classification;

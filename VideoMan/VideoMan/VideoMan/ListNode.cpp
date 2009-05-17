@@ -53,15 +53,21 @@ Will fail if it has connections, only moves one node
 */
 void ListNode::insertAfter(ListNode* node)
 {
+	//if im the node at the end
+	//or i don't have any links
 	if (m_next == 0)
 	{
 		m_next = node->getNext();
 		node->setNext(this);
-		this->m_previous = node;
+		m_previous = node;
 	}
 	else 
 	{
-		cout << "cannont insert properly\n";
+		cout << "shuffling linked list" << endl;
+		m_next = node->getNext();
+		m_next->setPrevious(this);
+		m_previous = node;
+		node->setNext(this);
 	}
 }
 

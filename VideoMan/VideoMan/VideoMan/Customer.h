@@ -9,6 +9,7 @@ class Customer
 public:
 	Customer(const string a_name, const string a_address, const string a_phonenumber);
 	Customer();
+	Customer(const string a_name);
 	~Customer();
 	string getName() const;
 	string getAddress() const;
@@ -16,6 +17,7 @@ public:
 	void addMovie(Movie* a_movie);
 	void removeMovie(Movie* a_movie);
 	bool searchMovie(Movie* a_movie);
+	void ToString();
 	friend ostream & operator<<(ostream &os, const Customer &e);
 private:
 	string m_name;

@@ -18,30 +18,101 @@ void MovieCollection::insert(Movie* data)
 	}
 	else 
 	{
-		p->insertAfter(lastNode);
-		lastNode = lastNode->getNext();
+		ListNode* _currNode;
+		for (_currNode = firstNode; _currNode != 0; _currNode = _currNode->getNext())
+		{
+			if (_currNode->getData()->getTitle() < data->getTitle()) 
+			{
+				if (_currNode->getNext() == 0) 
+				{
+					p->insertAfter(_currNode);
+					_currNode->setNext(p);
+					lastNode = p;
+					p->setPrevious(_currNode);
+					//lastNode = lastNode->getNext();
+				//	_currNode->setNext(p);
+				} else if (_currNode->getNext()->getData()->getTitle() > data->getTitle())
+				{
+					p->insertAfter(_currNode);
+					_currNode->setNext(p);
+					p->setPrevious(_currNode);
+				}
+
+			}
+		}
 	}
 	m_listCount++;
 }
 
+void MovieCollection::traverse()
+{
+	ListNode* _currNode = firstNode;
+	for (_currNode = firstNode; _currNode != 0; _currNode = _currNode->getNext())
+	{
+		cout << _currNode->getData()->getTitle() << endl;
+	}
+}
+
+void MovieCollection::traverse(string a_char)
+{
+	ListNode* _currNode = firstNode;
+	for (_currNode = firstNode; _currNode != 0; _currNode = _currNode->getNext())
+	{
+		
+		/*string tempstring(a_char.begin()
+		if (a_char = _currNode->getData()->getTitle().
+		{
+			cout << _currNode->getData()->getTitle() << endl;
+		{*/
+	}
+}
+
+
 bool MovieCollection::search(Movie* data)
 {
 	ListNode* _currNode = firstNode;
-	while ((_currNode != lastNode) || (_currNode != 0))
+	for (_currNode = firstNode; _currNode != 0; _currNode = _currNode->getNext())
 	{
 		if (_currNode->getData()->getTitle() == data->getTitle())
 		{
 			return 1;
 		}
-		_currNode = _currNode->getNext();
-		if ((_currNode == lastNode) || (_currNode == 0))
+	}
+
+	return 0;
+}
+
+bool MovieCollection::search(string data)
+{
+	ListNode* _currNode = firstNode;
+	for (_currNode = firstNode; _currNode != 0; _currNode = _currNode->getNext())
+	{
+		if (_currNode->getData()->getTitle() == data)
 		{
-			break;
+			return 1;
 		}
 	}
 
 	return 0;
 }
+
+Movie* MovieCollection::getMovie(string a_name)
+{
+	ListNode* _currNode = firstNode;
+	for (_currNode = firstNode; _currNode != 0; _currNode = _currNode->getNext())
+	{
+		if (_currNode->getData()->getTitle() == a_name)
+		{
+			return _currNode->getData();
+		}
+	}
+
+	return 0;
+}
+
+
+
+
 
 void MovieCollection::clear()
 {
@@ -77,11 +148,11 @@ bool MovieCollection::remove(Movie* data)
 				_currNode->getNext()->setPrevious(_currNode->getPrevious());
 				_currNode->getPrevious()->setNext(_currNode->getNext());
 			}
-			
+
 			//create a temp variable as to not cause error with our for loop
 			_deleteNode = _currNode;
 			_currNode = _currNode->getPrevious();
-			
+
 			delete _deleteNode;
 			_success = 1;
 		}

@@ -3,6 +3,15 @@
 Customer::Customer()
 {
 }
+
+Customer::Customer(const string a_name)
+{
+	m_name = a_name;
+	m_address = "";
+	m_phonenumber = "";
+	MovieCollection m_movies;
+}
+
 Customer::Customer(const string a_name, const string a_address, const string a_phonenumber)
 {
 	m_name = a_name;
@@ -51,6 +60,13 @@ ostream & operator<<(ostream& os, const Customer& e)
 {
 	os <<  e.getName() << endl; 
 	return os;
+}
+
+void Customer::ToString()
+{
+	cout << m_name << endl;
+	cout << m_address << endl;
+	cout << m_phonenumber << endl;
 }
 
 Customer::~Customer(void)

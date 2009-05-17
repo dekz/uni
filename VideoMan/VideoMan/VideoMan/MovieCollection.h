@@ -20,6 +20,10 @@ public:
 	bool remove(Movie* data); //remove something and decrease listCount
 	void clear(); //delete all objects 
 	bool search(Movie* data);
+	void traverse();
+	void traverse(string a_char);
+	bool search(string data);
+	Movie* getMovie(string a_name);
 
 private:
 	int m_listCount;
