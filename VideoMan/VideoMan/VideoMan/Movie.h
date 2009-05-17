@@ -14,8 +14,15 @@ public:
 	~Movie();
 	string getTitle();
 	void ToString();
+	void remCopy();
+	void addCopy();
+	bool isAvail();
+	void leaseCopy();
+	void returnCopy();
 
 private:
+	int m_copies;
+	int m_avail;
 	string m_title;
 	int m_duration; //in minutes
 	string m_genre;

@@ -13,9 +13,11 @@ void removeMovie(Movie* a_movie);
 void addCustomer(Customer* a_customer);
 void removeCustomer(Customer* a_customer);
 void getMovieDetails();
-void getMovieDetails(string a_movie);
+Movie* getMovie();
+//void getMovieDetails(string a_movie);
 void getCustomerDetails();
-void getCustomerDetails(string a_customer);
+Customer* getCustomer();
+//void getCustomerDetails(string a_customer);
 void addMovie();
 void addCustomer();
 void removeMovie();
@@ -24,6 +26,10 @@ void searchMovie();
 void doInstruction(string a_instruction);
 void listCustomers();
 void listMovies();
+void addMovieToCustomer(Movie* a_movie, Customer* a_customer);
+void addMovieToCustomer();
+void remMovieFromCustomer(Movie* a_movie, Customer* a_customer);
+void remMovieFromCustomer();
 
 MovieCollection g_MOVIES;
 CustomerCollection g_CUSTOMERS;
@@ -149,7 +155,7 @@ void searchCustomers()
 
 void doInstruction(string a_instruction)
 {
-	if ((a_instruction == "-1") || (a_instruction == "quit")) cout << "problem";
+	if ((a_instruction == "-1") || (a_instruction == "quit")) return;
 	else if (a_instruction == "addmovie") addMovie();
 	else if (a_instruction == "removemovie") removeMovie();
 	else if (a_instruction == "addcustomer") addCustomer();
@@ -160,6 +166,7 @@ void doInstruction(string a_instruction)
 	else if (a_instruction == "listmovies") listMovies();
 	else if (a_instruction == "getcustomerdetails") getCustomerDetails();
 	else if (a_instruction == "getmoviedetails") getMovieDetails();
+	else if (a_instruction == "addmovietocustomer") addMovieToCustomer();
 }
 
 void listCustomers()
@@ -217,41 +224,112 @@ void removeCustomer(Customer a_customer)
 {
 }
 
+
+Movie* getMovie()
+{
+	string _name;
+	cout << "Enter Movie information - Enter -1 to quit" << endl;
+	cout << "Name: ";
+	cin  >> _name;
+	if (_name == "-1") return 0;
+	if (g_MOVIES.search(_name))
+	{
+		return g_MOVIES.getMovie(_name);
+	}
+	else
+	{
+		cout << "Movie not in database" << endl;
+		return 0;
+	}
+}
+
 void getMovieDetails()
+{
+	if (getMovie())
+	{
+		getMovie()->ToString();
+	}
+}
+
+/*void getMovieDetails(string a_movie)
+{
+//cout << g_MOVIES.getMovie(a_movie)->getTitle();
+g_MOVIES.getMovie(a_movie)->ToString();
+}*/
+
+Customer* getCustomer()
 {
 	string _name;
 	cout << "Enter Customer information - Enter -1 to quit" << endl;
 	cout << "Name: ";
 	cin  >> _name;
-	if (_name == "-1") return;
-	if (g_MOVIES.search(_name))
+	if (_name == "-1") return 0;
+	if (g_CUSTOMERS.search(_name))
 	{
-		getMovieDetails(_name);
+		return (g_CUSTOMERS.getCustomer(_name));
 	}
-	else cout << "Movie not in database" << endl;
-	
-}
-void getMovieDetails(string a_movie)
-{
-	//cout << g_MOVIES.getMovie(a_movie)->getTitle();
-	g_MOVIES.getMovie(a_movie)->ToString();
+	else 
+	{
+		cout << "Customer not in database" << endl;
+		return 0;
+	}
+
 }
 
 void getCustomerDetails()
 {
-	string _name;
-	cout << "Enter Customer information - Enter -1 to quit" << endl;
-	cout << "Name: ";
-	cin  >> _name;
-	if (_name == "-1") return;
-	if (g_CUSTOMERS.search(_name))
+	if (getCustomer())
 	{
-		getCustomerDetails(_name);
+		getCustomer()->ToString();
 	}
-	else cout << "Customer not in database" << endl;
 }
-
+/*
 void getCustomerDetails(string a_customer)
 {
-	g_CUSTOMERS.getCustomer(a_customer)->ToString();
+g_CUSTOMERS.getCustomer(a_customer)->ToString();
+}*/
+
+void addMovieToCustomer()
+{
+	addMovieToCustomer(getMovie(), getCustomer());
+}
+
+void addMovieToCustomer(Movie* a_movie, Customer* a_customer)
+{
+	if ((a_movie != 0) && (a_customer != 0))
+	{
+		try 
+		{
+			a_customer->addMovie(a_movie);
+		} catch (...)
+		{
+			cout << "Could add movie" << endl;
+			return;
+		}
+		cout << "Added " << a_movie->getTitle() << " to " << a_customer->getName() << endl;
+	}
+	else cout << "Error null pointer" << endl;
+}
+
+void remMovieFromCustomer()
+{
+	remMovieFromCustomer(getMovie(), getCustomer());
+}
+
+void remMovieFromCustomer(Movie* a_movie, Customer* a_customer)
+{
+	if ((a_movie != 0) && (a_customer != 0))
+	{
+		try 
+		{
+			a_customer->removeMovie(a_movie);
+		}
+		catch (...)
+		{
+			cout << "Could not remove movie" << endl;
+			return;
+		}
+		cout << "Removed " << a_movie->getTitle() << " from " << a_customer->getName() << endl;
+	}
+	else cout << "Error null pointer" << endl;
 }
