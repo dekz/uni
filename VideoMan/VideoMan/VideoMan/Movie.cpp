@@ -40,6 +40,10 @@ void Movie::addCopy()
 {
 	m_copies++;
 }
+void Movie::setCopies(int a_totalCopies)
+{
+	m_copies = a_totalCopies;
+}
 
 void Movie::remCopy()
 {

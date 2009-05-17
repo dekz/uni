@@ -96,6 +96,7 @@ void addMovie()
 
 void removeMovie()
 {
+	removeMovie(getMovie());
 }
 void addMovie(Movie* a_movie)
 {
@@ -183,8 +184,9 @@ void listMovies()
 	cout << endl;
 }
 
-void removeMovie(Movie a_movie)
+void removeMovie(Movie* a_movie)
 {
+	g_MOVIES.remove(a_movie);
 }
 void addCustomer()
 {
@@ -203,7 +205,7 @@ void addCustomer()
 }
 void removeCustomer()
 {
-
+	removeCustomer(getCustomer());
 }
 
 void addCustomer(Customer* a_customer)
@@ -220,10 +222,10 @@ void addCustomer(Customer* a_customer)
 	cout << "Inserted customer: " << a_customer->getName() << endl;
 }
 
-void removeCustomer(Customer a_customer)
+void removeCustomer(Customer* a_customer)
 {
+	g_CUSTOMERS.deleteItem(a_customer);
 }
-
 
 Movie* getMovie()
 {
@@ -283,6 +285,7 @@ void getCustomerDetails()
 		getCustomer()->ToString();
 	}
 }
+
 /*
 void getCustomerDetails(string a_customer)
 {

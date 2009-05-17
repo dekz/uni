@@ -19,6 +19,7 @@ public:
 	bool isAvail();
 	void leaseCopy();
 	void returnCopy();
+	void setCopies(int a_totalCopies);
 
 private:
 	int m_copies;
