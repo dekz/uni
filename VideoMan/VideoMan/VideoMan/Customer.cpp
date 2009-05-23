@@ -23,7 +23,7 @@ Customer::Customer(const string a_name, const string a_address, const string a_p
 void Customer::addMovie(Movie* a_movie)
 {
 	//look through the global list of movies, add a pointer to that object into our list
-	m_movies.insert(a_movie);
+	if (a_movie->leaseCopy()) m_movies.insert(a_movie);
 }
 
 bool Customer::searchMovie(Movie* a_movie)
@@ -31,9 +31,21 @@ bool Customer::searchMovie(Movie* a_movie)
 	return m_movies.search(a_movie);
 }
 
+void Customer::displayMovies()
+{
+	m_movies.traverse();
+	//cout << "
+}
+
 void Customer::removeMovie(Movie* a_movie)
 {
-	//look through our local list of movies, remove the list if it exists
+	if (m_movies.search(a_movie))
+	{
+		//take the movie out of the custoemrs ADT
+		m_movies.remove(a_movie);
+		//tell the movie object one was returned
+		a_movie->returnCopy();
+	}
 }
 
 string Customer::getName() const

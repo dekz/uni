@@ -23,12 +23,17 @@ bool Movie::isAvail()
 	} else return 0;
 }
 
-void Movie::leaseCopy()
+bool Movie::leaseCopy()
 {
 	if (isAvail())
 	{
 		m_avail--;
-	} else cout << "Not able to lease copy" << endl;
+		return true;
+	} else 
+	{
+		cout << "Not able to lease copy" << endl;
+		return false;
+	}
 }
 
 void Movie::returnCopy()

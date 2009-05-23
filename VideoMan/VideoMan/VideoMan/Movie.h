@@ -17,7 +17,7 @@ public:
 	void remCopy();
 	void addCopy();
 	bool isAvail();
-	void leaseCopy();
+	bool leaseCopy();
 	void returnCopy();
 	void setCopies(int a_totalCopies);
 

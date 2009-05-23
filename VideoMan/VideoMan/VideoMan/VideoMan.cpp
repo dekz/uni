@@ -30,6 +30,8 @@ void addMovieToCustomer(Movie* a_movie, Customer* a_customer);
 void addMovieToCustomer();
 void remMovieFromCustomer(Movie* a_movie, Customer* a_customer);
 void remMovieFromCustomer();
+void getInstructions();
+void getCustomersMovies();
 
 MovieCollection g_MOVIES;
 CustomerCollection g_CUSTOMERS;
@@ -66,7 +68,7 @@ int main()
 	//cout << "search for jacob: " << g_CUSTOMERS.search(jacob) << endl;
 	string _instruction;
 	//cin >> _instruction;
-	cout << "# Enter instructions" << endl;
+	getInstructions();
 	cout << "# ";
 	while (!((cin >> _instruction) == "quit"))
 	{
@@ -154,6 +156,11 @@ void searchCustomers()
 
 }
 
+void getInstructions()
+{
+	cout << "\n addmovie, removemovie, listmovies, addcustomer, removecustomer, listcustomers, findmovie, findcustomer, getcustomerdetails, getmoviedetails, addmovietocustomer, getcustomermovies" << endl;
+}
+
 void doInstruction(string a_instruction)
 {
 	if ((a_instruction == "-1") || (a_instruction == "quit")) return;
@@ -203,6 +210,8 @@ void addCustomer()
 	addCustomer(new Customer(_name));
 
 }
+
+
 void removeCustomer()
 {
 	removeCustomer(getCustomer());
@@ -250,6 +259,8 @@ void getMovieDetails()
 	getMovie()->ToString();
 }
 
+
+
 /*void getMovieDetails(string a_movie)
 {
 //cout << g_MOVIES.getMovie(a_movie)->getTitle();
@@ -275,10 +286,18 @@ Customer* getCustomer()
 
 }
 
+void getCustomersMovies()
+{
+	getCustomer()->displayMovies();	
+}
+
+
 void getCustomerDetails()
 {
 	getCustomer()->ToString();
 }
+
+
 
 /*
 void getCustomerDetails(string a_customer)

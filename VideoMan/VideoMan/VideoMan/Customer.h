@@ -18,6 +18,7 @@ public:
 	void removeMovie(Movie* a_movie);
 	bool searchMovie(Movie* a_movie);
 	void ToString();
+	void displayMovies();
 	friend ostream & operator<<(ostream &os, const Customer &e);
 private:
 	string m_name;
