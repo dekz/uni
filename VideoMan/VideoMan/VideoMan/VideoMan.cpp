@@ -158,7 +158,7 @@ void searchCustomers()
 
 void getInstructions()
 {
-	cout << "\n addmovie, removemovie, listmovies, addcustomer, removecustomer, listcustomers, findmovie, findcustomer, getcustomerdetails, getmoviedetails, addmovietocustomer, removemoviefromcustomer, getcustomermovies, whosrenting" << endl;
+	cout << "\n addmovie, removemovie, listmovies, addcustomer, removecustomer, listcustomers, findmovie, findcustomer, getcustomerdetails, getmoviedetails, addmovietocustomer, removemoviefromcustomer, getcustomersmovies, whosrenting" << endl;
 }
 
 void doInstruction(string a_instruction)
