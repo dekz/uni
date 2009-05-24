@@ -29,7 +29,7 @@ public:
 	void displayMovies();
 	bool isRenting(Movie* a_movie);
 	void displayTopMovies();
-	void getHighest(map<string, int> map);
+	void insertIntoRented(Movie* a_movie, list<string> a_list);
 	friend ostream & operator<<(ostream &os, const Customer &e);
 
 private:

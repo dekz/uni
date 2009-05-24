@@ -32,6 +32,7 @@ void remMovieFromCustomer(Movie* a_movie, Customer* a_customer);
 void remMovieFromCustomer();
 void getInstructions();
 void getCustomersMovies();
+void displayCustomersTopMovies();
 void findCustomersRentingMovie();
 
 MovieCollection g_MOVIES;
@@ -157,7 +158,7 @@ void searchCustomers()
 
 void getInstructions()
 {
-	cout << "\n addmovie, removemovie, listmovies, addcustomer, removecustomer, listcustomers, findmovie, findcustomer, getcustomerdetails, getmoviedetails, addmovietocustomer, getcustomermovies, whosrenting" << endl;
+	cout << "\n addmovie, removemovie, listmovies, addcustomer, removecustomer, listcustomers, findmovie, findcustomer, getcustomerdetails, getmoviedetails, addmovietocustomer, removemoviefromcustomer, getcustomermovies, whosrenting" << endl;
 }
 
 void doInstruction(string a_instruction)
@@ -177,6 +178,7 @@ void doInstruction(string a_instruction)
 	else if (a_instruction == "getcustomersmovies") getCustomersMovies();
 	else if (a_instruction == "removemoviefromcustomer") remMovieFromCustomer();
 	else if (a_instruction == "whosrenting") findCustomersRentingMovie();
+	else if (a_instruction == "showcustomerstopmovies") displayCustomersTopMovies();
 }
 
 void listCustomers()
@@ -263,6 +265,13 @@ void getMovieDetails()
 		movie->ToString();
 }
 
+
+void displayCustomersTopMovies()
+{
+	Customer* _customer = getCustomer();
+		if (_customer != 0)
+			_customer->displayTopMovies();
+}
 
 
 /*void getMovieDetails(string a_movie)

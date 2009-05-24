@@ -53,9 +53,9 @@ void Customer::removeMovie(Movie* a_movie)
 		//take the movie out of the custoemrs ADT
 		m_movies.remove(a_movie);
 		//add movie to our top list
-		if (m_rentedMovies.find(a_movie->getTitle()) != 0)
+/*		if (m_rentedMovies.find(a_movie->getTitle()) != 0)
 		{
-			time_t rawtime;
+			/*time_t rawtime;
 			struct tm * timeinfo;
 			time ( &rawtime );
 			timeinfo = localtime ( &rawtime );
@@ -63,26 +63,50 @@ void Customer::removeMovie(Movie* a_movie)
 			list<string> _list = m_rentedMovies[a_movie->getTitle()]; 
 			string _test = asctime(timeinfo);
 			_list.push_back(_test);
-			m_rentedMovies[a_movie->getTitle()] = _list;
+			m_rentedMovies.erase(m_rentedMovies.find(a_movie->getTitle()));
+			insertIntoRented(a_movie, _list);
 		} else 
 		{
-			m_rentedMovies.insert( make_pair(a_movie->getTitle(), 0));
-		}
+			/*time_t rawtime;
+			struct tm * timeinfo;
+			time ( &rawtime );
+			timeinfo = localtime ( &rawtime );
+			string _test = asctime(timeinfo);
+			list<string> _list;
+			_list.push_back(_test);
+			insertIntoRented(a_movie, _list);*/
+		//}
 		//tell the movie object one was returned
+		
 		a_movie->returnCopy();
 	}
 }
 
+void Customer::insertIntoRented(Movie* a_movie, list<string> a_list)
+{
+	//m_rentedMovies[a_movie->getTitle()] = _list;
+
+	map<string,list<string>>::iterator iter;
+	for( iter = m_rentedMovies.begin(); iter != m_rentedMovies.end(); ++iter ) {
+		//cout << "Key: '" << iter->first << "', Value: " << iter->second << endl;
+		if (iter->first.size() > a_list.size())
+		{
+			m_rentedMovies.insert(iter, make_pair(a_movie->getTitle(), a_list));
+		}
+	}
+}
 
 void Customer::displayTopMovies()
 {
-	
+	int counter = 1;
+	map<string,list<string>>::iterator iter;
+	for(iter = m_rentedMovies.begin(); iter != m_rentedMovies.end(); ++iter ) {
+		if(counter == 10){  break; }	
+			cout << counter << ". Movie: '" << iter->first << "', Dates: "  << endl; // << iter->second
+			counter++;
+	}
 }
 
-void Customer::getHighest(map<string, int> map)
-{
-
-}
 
 string Customer::getName() const
 {
