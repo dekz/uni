@@ -21,6 +21,8 @@ public:
 	bool search(Customer* a_customer) const;
 	void PreOrderTraverse() const;
 	void InOrderTraverse() const;
+	void rentingMovie(Movie* a_movie);
+	void rentingMovie(CTreeNode* a_node, Movie* a_movie);
 	Customer* getCustomer(string a_name);
 	Customer* getCustomer(string a_name, CTreeNode* a_node);
 	void PostOrderTraverse() const;

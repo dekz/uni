@@ -27,6 +27,7 @@ public:
 	bool searchMovie(Movie* a_movie);
 	void ToString();
 	void displayMovies();
+	bool isRenting(Movie* a_movie);
 	void displayTopMovies();
 	void getHighest(map<string, int> map);
 	friend ostream & operator<<(ostream &os, const Customer &e);

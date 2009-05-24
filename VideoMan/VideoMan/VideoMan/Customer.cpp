@@ -12,6 +12,8 @@ Customer::Customer(const string a_name)
 	MovieCollection m_movies;
 }
 
+
+
 Customer::Customer(const string a_name, const string a_address, const string a_phonenumber)
 {
 	m_name = a_name;
@@ -35,6 +37,13 @@ void Customer::displayMovies()
 {
 	m_movies.traverse();
 	//cout << "
+}
+
+bool Customer::isRenting(Movie* a_movie)
+{
+	if (m_movies.search(a_movie))
+		return true;
+	else return false;
 }
 
 void Customer::removeMovie(Movie* a_movie)

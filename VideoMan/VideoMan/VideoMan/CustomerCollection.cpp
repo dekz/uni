@@ -117,6 +117,24 @@ void CustomerCollection::PreOrderTraverse(CTreeNode* root) const
 	}
 }
 
+void CustomerCollection::rentingMovie(Movie* a_movie)
+{
+	rentingMovie(m_root, a_movie);
+}
+
+void CustomerCollection::rentingMovie(CTreeNode* root, Movie* a_movie)
+{
+	if (root != 0)
+	{
+		rentingMovie(root->getLChild(), a_movie);
+		if (root->getItem()->isRenting(a_movie))
+		{
+			cout << root->getItem()->getName() << endl;
+		}
+		rentingMovie(root->getRChild(), a_movie);
+	}
+}
+
 void CustomerCollection::InOrderTraverse() const
 {
 	InOrderTraverse(m_root);

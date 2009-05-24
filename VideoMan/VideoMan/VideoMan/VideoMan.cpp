@@ -157,7 +157,7 @@ void searchCustomers()
 
 void getInstructions()
 {
-	cout << "\n addmovie, removemovie, listmovies, addcustomer, removecustomer, listcustomers, findmovie, findcustomer, getcustomerdetails, getmoviedetails, addmovietocustomer, getcustomermovies" << endl;
+	cout << "\n addmovie, removemovie, listmovies, addcustomer, removecustomer, listcustomers, findmovie, findcustomer, getcustomerdetails, getmoviedetails, addmovietocustomer, getcustomermovies, whosrenting" << endl;
 }
 
 void doInstruction(string a_instruction)
@@ -176,6 +176,7 @@ void doInstruction(string a_instruction)
 	else if (a_instruction == "addmovietocustomer") addMovieToCustomer();
 	else if (a_instruction == "getcustomersmovies") getCustomersMovies();
 	else if (a_instruction == "removemoviefromcustomer") remMovieFromCustomer();
+	else if (a_instruction == "whosrenting") findCustomersRentingMovie();
 }
 
 void listCustomers()
@@ -344,7 +345,8 @@ void findCustomersRentingMovie()
 	Movie* _movie = getMovie();
 	if (_movie != 0)
 	{
-
+		//traverse through the customers, 
+		g_CUSTOMERS.rentingMovie(_movie);
 	}
 	
 }
