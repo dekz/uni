@@ -137,10 +137,12 @@ bool MovieCollection::remove(Movie* data)
 			if (_currNode == firstNode)
 			{
 				firstNode = _currNode->getNext();
+				firstNode->setPrevious(0);
 			} 
 			else if (_currNode == lastNode)
 			{
 				lastNode = _currNode->getPrevious();
+				lastNode->setNext(0);
 			}
 			else
 			{
@@ -155,6 +157,7 @@ bool MovieCollection::remove(Movie* data)
 
 			delete _deleteNode;
 			_success = 1;
+			break;
 		}
 	}
 

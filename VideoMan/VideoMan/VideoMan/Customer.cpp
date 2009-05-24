@@ -46,7 +46,15 @@ void Customer::removeMovie(Movie* a_movie)
 		//add movie to our top list
 		if (m_rentedMovies.find(a_movie->getTitle()) != 0)
 		{
-			m_rentedMovies[a_movie->getTitle()] += 1; 
+			time_t rawtime;
+			struct tm * timeinfo;
+			time ( &rawtime );
+			timeinfo = localtime ( &rawtime );
+			//add a new rented and add the time
+			list<string> _list = m_rentedMovies[a_movie->getTitle()]; 
+			string _test = asctime(timeinfo);
+			_list.push_back(_test);
+			m_rentedMovies[a_movie->getTitle()] = _list;
 		} else 
 		{
 			m_rentedMovies.insert( make_pair(a_movie->getTitle(), 0));

@@ -98,6 +98,7 @@ void removeMovie()
 		removeMovie(_movie);
 	}
 }
+
 void addMovie(Movie* a_movie)
 {
 	//g_MOVIES.insert(a_movie);
@@ -124,7 +125,7 @@ void searchMovie()
 {
 	string _searchString;
 	cout << "\nSearching for a Movie" << endl;
-	cout << "Movie Name?: "; 
+	cout << "Movie Name: "; 
 	cin >> _searchString;
 	if(g_MOVIES.search(_searchString))
 	{
@@ -174,6 +175,7 @@ void doInstruction(string a_instruction)
 	else if (a_instruction == "getmoviedetails") getMovieDetails();
 	else if (a_instruction == "addmovietocustomer") addMovieToCustomer();
 	else if (a_instruction == "getcustomersmovies") getCustomersMovies();
+	else if (a_instruction == "removemoviefromcustomer") remMovieFromCustomer();
 }
 
 void listCustomers()

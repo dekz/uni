@@ -3,7 +3,10 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <list>
+#include <time.h>
 #include "MovieCollection.h"
+
 using namespace std;
 class Customer
 {
@@ -29,7 +32,7 @@ private:
 	string m_address;
 	string m_phonenumber;
 	MovieCollection m_movies;
-	map<string, int> m_rentedMovies;
+	map<string, list<string>> m_rentedMovies;
 	void __cleanUp();
 
 };
