@@ -19,8 +19,8 @@ bool Movie::isAvail()
 {
 	if ((m_avail <= m_copies) && (m_avail != 0))
 	{
-		return 1;
-	} else return 0;
+		return true;
+	} else return false;
 }
 
 bool Movie::leaseCopy()
@@ -32,8 +32,8 @@ bool Movie::leaseCopy()
 	} else 
 	{
 		cout << "Not able to lease copy" << endl;
-		return false;
 	}
+	return false;
 }
 
 void Movie::returnCopy()

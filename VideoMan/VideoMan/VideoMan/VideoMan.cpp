@@ -92,7 +92,11 @@ void addMovie()
 
 void removeMovie()
 {
-	removeMovie(getMovie());
+	Movie* _movie = getMovie();
+	if (_movie != NULL) 
+	{
+		removeMovie(_movie);
+	}
 }
 void addMovie(Movie* a_movie)
 {
@@ -169,7 +173,7 @@ void doInstruction(string a_instruction)
 	else if (a_instruction == "getcustomerdetails") getCustomerDetails();
 	else if (a_instruction == "getmoviedetails") getMovieDetails();
 	else if (a_instruction == "addmovietocustomer") addMovieToCustomer();
-		else if (a_instruction == "getcustomersmovies") getCustomersMovies();
+	else if (a_instruction == "getcustomersmovies") getCustomersMovies();
 }
 
 void listCustomers()
@@ -188,7 +192,7 @@ void listMovies()
 
 void removeMovie(Movie* a_movie)
 {
-	g_MOVIES.remove(a_movie);
+	if ((g_MOVIES.search(a_movie)) && (a_movie != NULL)) g_MOVIES.remove(a_movie);
 }
 void addCustomer()
 {
@@ -245,15 +249,15 @@ Movie* getMovie()
 	else
 	{
 		cout << "Movie not in database" << endl;
-		return 0;
 	}
+	return NULL;
 }
 
 void getMovieDetails()
 {
 	Movie* movie = getMovie();
 	if (movie != 0)
-	movie->ToString();
+		movie->ToString();
 }
 
 
@@ -287,7 +291,7 @@ void getCustomersMovies()
 {
 	Customer* customer = getCustomer();
 	if (customer != 0)
-	customer->displayMovies();	
+		customer->displayMovies();	
 }
 
 
@@ -295,7 +299,7 @@ void getCustomerDetails()
 {
 	Customer* customer = getCustomer();
 	if (customer != 0)
-	customer->ToString();
+		customer->ToString();
 }
 
 
@@ -342,16 +346,21 @@ void remMovieFromCustomer(Movie* a_movie, Customer* a_customer)
 {
 	if ((a_movie != 0) && (a_customer != 0))
 	{
-		try 
+		if (g_MOVIES.search(a_movie))
 		{
-			a_customer->removeMovie(a_movie);
+
+			try 
+			{
+				a_customer->removeMovie(a_movie);
+				cout << "Removed " << a_movie->getTitle() << " from " << a_customer->getName() << endl;
+			}
+			catch (...)
+			{
+				cout << "Could not remove movie" << endl;
+				return;
+			}
+
 		}
-		catch (...)
-		{
-			cout << "Could not remove movie" << endl;
-			return;
-		}
-		cout << "Removed " << a_movie->getTitle() << " from " << a_customer->getName() << endl;
 	}
 	else cout << "Error null pointer" << endl;
 }
