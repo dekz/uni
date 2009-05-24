@@ -66,6 +66,8 @@ Movie::Movie(const string a_title, const int a_duration, const string a_genre, c
 	m_genre = a_genre;
 	m_releaseDate = a_releaseDate;
 	m_title = a_title;
+	m_copies = 1;
+	m_avail = 1;
 }
 
 void Movie::ToString()

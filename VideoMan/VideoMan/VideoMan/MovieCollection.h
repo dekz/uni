@@ -16,8 +16,8 @@ public:
 	bool isEmpty();
 	bool isFull();
 	bool isMember();
-	void insert(Movie* data); //insert somewhere and increase listCount
-	bool remove(Movie* data); //remove something and decrease listCount
+	void insert(Movie* data); 
+	bool remove(Movie* data); 
 	void clear(); //delete all objects 
 	bool search(Movie* data);
 	void traverse();

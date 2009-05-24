@@ -43,9 +43,28 @@ void Customer::removeMovie(Movie* a_movie)
 	{
 		//take the movie out of the custoemrs ADT
 		m_movies.remove(a_movie);
+		//add movie to our top list
+		if (m_rentedMovies.find(a_movie->getTitle()) != 0)
+		{
+			m_rentedMovies[a_movie->getTitle()] += 1; 
+		} else 
+		{
+			m_rentedMovies.insert( make_pair(a_movie->getTitle(), 0));
+		}
 		//tell the movie object one was returned
 		a_movie->returnCopy();
 	}
+}
+
+
+void Customer::displayTopMovies()
+{
+	
+}
+
+void Customer::getHighest(map<string, int> map)
+{
+
 }
 
 string Customer::getName() const

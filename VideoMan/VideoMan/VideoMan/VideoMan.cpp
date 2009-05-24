@@ -32,6 +32,7 @@ void remMovieFromCustomer(Movie* a_movie, Customer* a_customer);
 void remMovieFromCustomer();
 void getInstructions();
 void getCustomersMovies();
+void findCustomersRentingMovie();
 
 MovieCollection g_MOVIES;
 CustomerCollection g_CUSTOMERS;
@@ -46,34 +47,18 @@ int main()
 	Movie* b5 = new Movie("c",10,"A","a","19th");
 	Movie* c5 = new Movie("z",10,"A","a","19th");
 	Customer* jacob = new Customer("jacob", "152","323");
-	//Customer* jack = new Customer("x", "152","323");
-	//Customer* bob = new Customer("bob", "152","323");
 	g_CUSTOMERS.insert(jacob);
-	//g_CUSTOMERS.insert(bob);
-	//g_CUSTOMERS.insert(jack);
 	g_MOVIES.insert(e5);
 	g_MOVIES.insert(a5);
 	g_MOVIES.insert(b5);
 	g_MOVIES.insert(c5);
-	//cout << "Looking for a5: " << g_MOVIES.search(e5) << endl;
-	//cout << "Removing a5: " << g_MOVIES.remove(a5) << endl;
-	//cout << "Looking for a5: " << g_MOVIES.search(c5) << endl;
 	jacob->addMovie(e5);
-	//cout << "search for jacob: " << g_CUSTOMERS.search(jacob) << endl;
-	/*g_CUSTOMERS.InOrderTraverse();
-	g_CUSTOMERS.PostOrderTraverse();
-	g_CUSTOMERS.PreOrderTraverse();*/
-	//cout << "search for movie in jacob: " << jacob->searchMovie(e5)  << endl;
-	//g_CUSTOMERS.deleteItem(jacob);
-	//cout << "search for jacob: " << g_CUSTOMERS.search(jacob) << endl;
 	string _instruction;
-	//cin >> _instruction;
+
 	getInstructions();
 	cout << "# ";
-	while (!((cin >> _instruction) == "quit"))
+	while (!((getline(cin,_instruction)) == "quit"))
 	{
-		cout << "you entered" << _instruction << endl;
-		cout << "performing instruction: " << _instruction << endl;
 		doInstruction(_instruction);
 		cout << "\n# ";
 	}
@@ -82,18 +67,27 @@ int main()
 
 void addMovie()
 {
-	string _movieName;
+	string _movieName, _genre, _classification, _releaseDate;
 	cout << "Enter Movie information - Enter -1 to quit" << endl;
 	cout << "Name: ";
-	cin  >> _movieName;
-	if (_movieName == "-1") return;
+	getline(cin, _movieName);
+	if ((_movieName == "-1") || (_movieName.length() == 0)) return;
 	if (g_MOVIES.search(_movieName))
 	{
-		cout << "\n# Movie is in database\n";
+		cout << "\n Movie is in database\n";
 		return;
 	}
 	//Movie* _tempMovie = new Movie(_movieName);
-	addMovie(new Movie(_movieName));
+	int _duration;
+	cout << "\nDuration: ";
+	cin >> _duration;
+	cout << "\nGenre: ";
+	cin >>  _genre;
+	cout << "\nClassification: ";
+	cin >> _classification;
+	cout << "\nRelease Date: ";
+	cin >> _releaseDate;
+	addMovie(new Movie(_movieName, _duration, _genre, _classification, _releaseDate));
 }
 
 void removeMovie()
@@ -125,16 +119,16 @@ void addMovie(Movie* a_movie)
 void searchMovie()
 {
 	string _searchString;
-	cout << "# Searching for a Movie" << endl;
+	cout << "\nSearching for a Movie" << endl;
 	cout << "Movie Name?: "; 
 	cin >> _searchString;
 	if(g_MOVIES.search(_searchString))
 	{
-		cout << "Found: " << _searchString << endl;
+		cout << "\nFound: " << _searchString << endl;
 	}
 	else
 	{
-		cout << "Did not Find: " << _searchString << endl;
+		cout << "\nDid not Find: " << _searchString << endl;
 	}
 
 }
@@ -201,7 +195,7 @@ void addCustomer()
 	string _name;
 	cout << "Enter Customer information - Enter -1 to quit" << endl;
 	cout << "Name: ";
-	cin  >> _name;
+	getline(cin, _name);
 	if (_name == "-1") return;
 	if (g_CUSTOMERS.search(_name))
 	{
@@ -242,7 +236,7 @@ Movie* getMovie()
 	string _name;
 	cout << "Enter Movie information - Enter -1 to quit" << endl;
 	cout << "Name: ";
-	cin  >> _name;
+	getline(cin, _name);
 	if (_name == "-1") return 0;
 	if (g_MOVIES.search(_name))
 	{
@@ -257,7 +251,9 @@ Movie* getMovie()
 
 void getMovieDetails()
 {
-	getMovie()->ToString();
+	Movie* movie = getMovie();
+	if (movie != 0)
+	movie->ToString();
 }
 
 
@@ -273,7 +269,7 @@ Customer* getCustomer()
 	string _name;
 	cout << "Enter Customer information - Enter -1 to quit" << endl;
 	cout << "Name: ";
-	cin  >> _name;
+	getline(cin, _name);
 	if (_name == "-1") return 0;
 	if (g_CUSTOMERS.search(_name))
 	{
@@ -282,20 +278,24 @@ Customer* getCustomer()
 	else 
 	{
 		cout << "Customer not in database" << endl;
-		return 0;
 	}
+	return NULL;
 
 }
 
 void getCustomersMovies()
 {
-	getCustomer()->displayMovies();	
+	Customer* customer = getCustomer();
+	if (customer != 0)
+	customer->displayMovies();	
 }
 
 
 void getCustomerDetails()
 {
-	getCustomer()->ToString();
+	Customer* customer = getCustomer();
+	if (customer != 0)
+	customer->ToString();
 }
 
 
@@ -320,7 +320,7 @@ void addMovieToCustomer(Movie* a_movie, Customer* a_customer)
 			a_customer->addMovie(a_movie);
 		} catch (...)
 		{
-			cout << "Could add movie" << endl;
+			cout << "Could not add movie" << endl;
 			return;
 		}
 		cout << "Added " << a_movie->getTitle() << " to " << a_customer->getName() << endl;
@@ -331,6 +331,11 @@ void addMovieToCustomer(Movie* a_movie, Customer* a_customer)
 void remMovieFromCustomer()
 {
 	remMovieFromCustomer(getMovie(), getCustomer());
+}
+
+void findCustomersRentingMovie()
+{
+
 }
 
 void remMovieFromCustomer(Movie* a_movie, Customer* a_customer)
