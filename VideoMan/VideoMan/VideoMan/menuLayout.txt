@@ -1,0 +1,33 @@
+___    _______ _________             
+__ |  / /___(_)______  /_____ ______ 
+__ | / / __  / _  __  / _  _ \_  __ \
+__ |/ /  _  /  / /_/ /  /  __// /_/ /
+_____/   /_/   \__,_/   \___/ \____/ 
+                                     
+
+______  ___                                               
+___   |/  /______ ________ ______ ________ ______ ________
+__  /|_/ / _  __ `/__  __ \_  __ `/__  __ `/_  _ \__  ___/
+_  /  / /  / /_/ / _  / / // /_/ / _  /_/ / /  __/_  /    
+/_/  /_/   \__,_/  /_/ /_/ \__,_/  _\__, /  \___/ /_/     
+                                   /____/  
+
+Jacob Evans || Bodan Shepherd
+
+
+addmovie                    : add a movie to the database
+removemovie                 : remove a movie from the database
+listmovies                  : list all movies alphabetically
+addcustomer                 : add a customer to the database
+removecustomer              : remove a customer
+listcustomers               : list all registered customers
+findmovie                   : find a specific movie (by title)
+findcustomer                : find a customer (by name)
+getcustomerdetails          : display a customer's details
+getmoviedetails             : display a movie's details
+addmovietocustomer          : rent a movie to a customer
+removemoviefromcustomer     : return a customer's movie
+getcustomersmovies          : display which customer has what movies
+whosrenting                 : display which movie is rented by whom
+
+-1                          : quit

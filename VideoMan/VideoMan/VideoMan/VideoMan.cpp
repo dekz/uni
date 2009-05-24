@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "CustomerCollection.h"
 #include "MovieCollection.h"
@@ -34,29 +35,16 @@ void getInstructions();
 void getCustomersMovies();
 void displayCustomersTopMovies();
 void findCustomersRentingMovie();
+void showMenu();
 
 MovieCollection g_MOVIES;
 CustomerCollection g_CUSTOMERS;
-Customer bob, jacob, jack;
-Movie e5;
-Movie a5;
 
 int main()
 {
-	Movie* e5 = new Movie("a",10,"A","a","19th");
-	Movie* a5 = new Movie("b",10,"A","a","19th");
-	Movie* b5 = new Movie("c",10,"A","a","19th");
-	Movie* c5 = new Movie("z",10,"A","a","19th");
-	Customer* jacob = new Customer("jacob", "152","323");
-	g_CUSTOMERS.insert(jacob);
-	g_MOVIES.insert(e5);
-	g_MOVIES.insert(a5);
-	g_MOVIES.insert(b5);
-	g_MOVIES.insert(c5);
-	jacob->addMovie(e5);
 	string _instruction;
-
-	getInstructions();
+	showMenu();
+	//getInstructions();
 	cout << "# ";
 	while (!((getline(cin,_instruction)) == "quit"))
 	{
@@ -64,6 +52,19 @@ int main()
 		cout << "\n# ";
 	}
 	return 0;
+}
+
+void showMenu()
+{
+	std::ifstream menuFileStream("menuLayout.txt");
+
+    std::copy(
+        std::istreambuf_iterator<char>(menuFileStream),
+        std::istreambuf_iterator<char>(),
+        std::ostreambuf_iterator<char>(std::cout)
+    );
+
+    std::cout << std::endl << std::endl;
 }
 
 void addMovie()
