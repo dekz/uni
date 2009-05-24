@@ -1,5 +1,9 @@
 #pragma once
 
+
+#ifndef _CustomerCollection
+#define _CustomerCollection
+
 #include <iostream>
 #include <string>
 #include "CTreeNode.h"
@@ -32,3 +36,4 @@ private:
 	CTreeNode* m_root;
 	void __cleanUp(const CTreeNode* p);
 };
+#endif

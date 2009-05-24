@@ -341,7 +341,12 @@ void remMovieFromCustomer()
 
 void findCustomersRentingMovie()
 {
+	Movie* _movie = getMovie();
+	if (_movie != 0)
+	{
 
+	}
+	
 }
 
 void remMovieFromCustomer(Movie* a_movie, Customer* a_customer)

@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef _ListNode
+#define _ListNode
+
 #include "Movie.h"
 using namespace std;
 
@@ -21,3 +25,4 @@ private:
 	ListNode* m_previous;
 	ListNode* m_next;
 };
+#endif

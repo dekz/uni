@@ -1,5 +1,9 @@
 #pragma once
 
+
+#ifndef _Customer
+#define _Customer
+
 #include <iostream>
 #include <string>
 #include <map>
@@ -36,3 +40,5 @@ private:
 	void __cleanUp();
 
 };
+
+#endif

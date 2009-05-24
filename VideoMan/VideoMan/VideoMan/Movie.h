@@ -1,7 +1,12 @@
 #pragma once
 
+#ifndef _Movie
+#define _Movie
+
+
 #include <iostream>
 #include <string>
+#include <list>
 
 using namespace std;
 
@@ -27,6 +32,10 @@ private:
 	string m_title;
 	int m_duration; //in minutes
 	string m_genre;
+	//list<Customer*> m_rentees;
 	string m_classification;
 	string m_releaseDate;
 };
+
+#endif
+

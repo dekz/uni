@@ -28,6 +28,7 @@ bool Movie::leaseCopy()
 	if (isAvail())
 	{
 		m_avail--;
+		//m_rentees.push_back(a_customer);
 		return true;
 	} else 
 	{

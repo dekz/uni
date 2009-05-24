@@ -1,5 +1,9 @@
 #pragma once
 
+
+#ifndef _MovieCollection
+#define _MovieCollection
+
 #include <iostream>
 #include <string>
 #include "ListNode.h"
@@ -31,3 +35,4 @@ private:
 	ListNode* lastNode;
 
 };
+#endif
