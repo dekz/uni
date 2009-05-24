@@ -175,6 +175,7 @@ void doInstruction(string a_instruction)
 	else if (a_instruction == "getcustomerdetails") getCustomerDetails();
 	else if (a_instruction == "getmoviedetails") getMovieDetails();
 	else if (a_instruction == "addmovietocustomer") addMovieToCustomer();
+		else if (a_instruction == "getcustomersmovies") getCustomersMovies();
 }
 
 void listCustomers()
